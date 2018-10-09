@@ -21,7 +21,8 @@ class Pair {
 }
 
 class Mover {
-  int capacity = 10;
+  int capacity = 100;
+  float radius = 15;
   
   Pair[] coords;
   int numVertices;
@@ -54,7 +55,7 @@ class Mover {
   }
 
   void drawSelf() {
-    strokeWeight(20);
+    strokeWeight(radius);
     stroke(255);
     noFill();
     

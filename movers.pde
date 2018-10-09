@@ -1,7 +1,7 @@
 import processing.svg.*;
 
-boolean SAVE_OUTPUT = false;
-int STEPS_BEFORE_SAVE = 80;
+boolean SAVE_OUTPUT = true;
+int STEPS_BEFORE_SAVE = 500;
 String OUTPUT_PATH = "outputs/";
 
 int NUM_MOVERS = 3;
@@ -32,10 +32,11 @@ void setup() {
 
 void systemStep() {
   // draw
-  fadeScreen(10);
+  // fadeScreen(1);
   // update
   checkBounces(0.8);
-  addRandomAccel(0.1);
+  // addRandomAccel(0.1);
+  chaseNext();
   kinematicsUpdate();
 }
 

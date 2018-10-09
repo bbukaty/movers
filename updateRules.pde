@@ -10,7 +10,7 @@ void kinematicsUpdate() {
     m.pos.x += m.vel.x;
     m.pos.y += m.vel.y;
 
-    crazyRing(m.pos, m.vel.x + m.vel.y);
+    crazyRing(m.pos, 0.8*m.radius + 5*abs(m.vel.x + m.vel.y));
     m.addPoint(m.pos.x, m.pos.y);
     m.drawSelf();
   }
@@ -43,5 +43,17 @@ void addRandomAccel(float aScale) {
     m.accel.scale(0.8); // keep things in check by slowing them down
     m.accel.x += random(-aScale, aScale);
     m.accel.y += random(-aScale, aScale);
+  }
+}
+
+float A_SCALE = 0.1;
+void chaseNext() {
+  Mover m;
+  Mover t; // target
+  for (int i=0; i < movers.length; i++) {
+    m = movers[i];
+    t = movers[(i + 1) % movers.length];
+    m.accel.x = A_SCALE * (t.pos.x - m.pos.x) / width;
+    m.accel.y = A_SCALE* (t.pos.y - m.pos.y) / height;
   }
 }

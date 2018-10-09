@@ -22,7 +22,7 @@ void fadeScreen(int alpha) {
 // returns coordinates of a random radial offshoot from x, y 
 Pair randomOffshoot(Pair pos, float angle, float minDist, float maxDist) {
   float radius = minDist + random(maxDist-minDist);
-  return new Pair(pos.x + 20*cos(angle), pos.y + 20*sin(angle));
+  return new Pair(pos.x + radius*cos(angle), pos.y + radius*sin(angle));
 }
 
 void crazyRing(Pair pos, float radius) {
