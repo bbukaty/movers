@@ -1,10 +1,10 @@
 import processing.svg.*;
 
-boolean SAVE_OUTPUT = true;
+boolean SAVE_OUTPUT = false;
 int STEPS_BEFORE_SAVE = 80;
 String OUTPUT_PATH = "outputs/";
 
-int NUM_MOVERS = 100;
+int NUM_MOVERS = 3;
 
 Mover[] movers;
 Pair mouse;
@@ -33,7 +33,6 @@ void setup() {
 void systemStep() {
   // draw
   fadeScreen(10);
-  drawCircles(20);
   // update
   checkBounces(0.8);
   addRandomAccel(0.1);

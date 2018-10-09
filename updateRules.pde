@@ -9,6 +9,10 @@ void kinematicsUpdate() {
 
     m.pos.x += m.vel.x;
     m.pos.y += m.vel.y;
+
+    crazyRing(m.pos, m.vel.x + m.vel.y);
+    m.addPoint(m.pos.x, m.pos.y);
+    m.drawSelf();
   }
 }
 
