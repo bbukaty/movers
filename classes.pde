@@ -17,6 +17,14 @@ class Pair {
     y *= c;
   }
 
+  void normalize() {
+    scale(1 / magnitude());
+  }
+
+  float magnitude() {
+    return sqrt(x*x + y*y);
+  }
+
   // more helpers here could allow for interesting experiments
 }
 
