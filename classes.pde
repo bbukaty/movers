@@ -7,18 +7,16 @@ class Pair {
     y = startY;
   }
 
-  void add(Pair toAdd) {
-    x += toAdd.x;
-    y += toAdd.y;
+  Pair add(Pair toAdd) {
+    return new Pair(x + toAdd.x, y + toAdd.y);
   }
 
-  void scale(float c) {
-    x *= c;
-    y *= c;
+  Pair scale(float c) {
+    return new Pair(x*c, y*c);
   }
 
-  void normalize() {
-    scale(1 / magnitude());
+  Pair normalize() {
+    return scale(1 / magnitude());
   }
 
   float magnitude() {

@@ -2,13 +2,10 @@
 // and a few movement helper functions.
 
 // perform one step of kinematics updates (position, velocity)
-void kinematicsUpdate() {
+void kinematicsUpdate(float factor) {
   for (Mover m : movers) {
-    m.vel.x += m.accel.x;
-    m.vel.y += m.accel.y;
-
-    m.pos.x += m.vel.x;
-    m.pos.y += m.vel.y;
+    m.vel = m.vel.add(m.accel.scale(factor));
+    m.pos = m.pos.add(m.vel.scale(factor));
   }
 }
 
@@ -58,12 +55,12 @@ void chaseNext(float factor) {
 
 void scaleVels(float factor) {
   for (Mover m: movers) {
-    m.vel.scale(factor);
+    m.vel = m.vel.scale(factor);
   }
 }
 
 void scaleAccels(float factor) {
   for (Mover m: movers) {
-    m.accel.scale(factor);
+    m.accel = m.accel.scale(factor);
   }
 }

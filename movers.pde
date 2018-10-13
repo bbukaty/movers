@@ -1,7 +1,7 @@
 import processing.svg.*;
 
 boolean SAVE_OUTPUT = false;
-int STEPS_BEFORE_SAVE = 300;
+int STEPS_BEFORE_SAVE = 30000;
 String OUTPUT_PATH = "outputs/candySwirl/";
 
 float[] BACKGROUND = {255,255,255};
