@@ -1,6 +1,6 @@
 // idea: two sets of movers with different rules, two competing shapes
 void systemStep() {
-  polygonBounce(4);
+  polygonBounce(8);
   // simpleParticles(4);
 }
 
@@ -15,7 +15,7 @@ void polygonBounce(int granularity) {
   noStroke();
   float r = triangleWave(0, 255, 100*granularity, 0);
   float g = triangleWave(0, 255, 120*granularity, 0);
-  fill(r, g, 200, 50);
+  fill(r, g, 200, 30);
   // drawPolygon();
   drawCurve();
 

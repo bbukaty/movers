@@ -35,7 +35,7 @@ float rangeSin(int low, int high, int period, int offset) {
 }
 
 void drawPolygon() {
-  beginShape();
+  beginShape(QUADS);
   Mover m;
   for (int i=0; i < movers.length + 1; i++) {
     m = movers[(i + 1) % movers.length];
