@@ -1,21 +1,21 @@
 // idea: two sets of movers with different rules, two competing shapes
 void systemStep() {
-  polygonBounce(8);
+  polygonBounce(1);
   // simpleParticles(4);
 }
 
 void polygonBounce(int granularity) {
   // GRANULAR PHYSICS STEP 
-  checkBounces(0.6);
+  checkBounces(0.6, 0.9);
   kinematicsUpdate(1.0/granularity);
 
   //DRAW
   // fadeScreen(3, 3);
   // fadeScreen(50, 40);
   noStroke();
-  float r = triangleWave(0, 255, 100*granularity, 0);
-  float g = triangleWave(0, 255, 120*granularity, 0);
-  fill(r, g, 200, 30);
+  float r = triangleWave(0, 255, 150*granularity, 70);
+  float g = triangleWave(0, 255, 180*granularity, 0);
+  fill(r, g, 200, 25);
   // drawPolygon();
   drawCurve();
 
@@ -32,7 +32,7 @@ void simpleParticles(int granularity) {
   fill(140);
   drawCircles(10);
 
-  checkBounces(0.6);
+  checkBounces(0.6, 0.9);
   kinematicsUpdate(1.0/granularity);
 
   if (frameCount % granularity == 0) {
