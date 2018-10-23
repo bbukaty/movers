@@ -2,32 +2,37 @@
 // and a few movement helper functions.
 
 // perform one step of kinematics updates (position, velocity)
-void kinematicsUpdate(float factor) {
+void kinematicsUpdate(float timePassed) {
   for (Mover m : movers) {
-    m.vel = m.vel.add(m.accel.scale(factor));
-    m.pos = m.pos.add(m.vel.scale(factor));
+    m.vel = m.vel.add(m.accel.scale(timePassed));
+    m.pos = m.pos.add(m.vel.scale(timePassed));
   }
 }
 
 // Checks if any movers went offscreen and bounces them off.
 void checkBounces(float speedDissipation) {
+  float BORDER = 0.1;
+  float rightEdge = (1-BORDER)*width;
+  float downEdge = (1-BORDER)*height;
+  float upEdge = BORDER*width;
+  float leftEdge = BORDER*height;
   for (Mover m: movers) {
-    if (m.pos.x > width) {
+    if (m.pos.x > rightEdge) {
+      m.pos.x = rightEdge;
       m.vel.x = -m.vel.x * speedDissipation;
-      m.pos.x = width;
       m.accel.x = 0;
-    } else if (m.pos.x < 0) {
+    } else if (m.pos.x < leftEdge) {
+      m.pos.x = leftEdge;
       m.vel.x = -m.vel.x * speedDissipation;
-      m.pos.x = 0;
       m.accel.x = 0;
     }
-    if (m.pos.y > height) {
+    if (m.pos.y > downEdge) {
+      m.pos.y = downEdge;
       m.vel.y = -m.vel.y * speedDissipation;
-      m.pos.y = height;
       m.accel.y = 0;
-    } else if (m.pos.y < 0) {
+    } else if (m.pos.y < upEdge) {
+      m.pos.y = upEdge;
       m.vel.y = -m.vel.y * speedDissipation;
-      m.pos.y = 0;
       m.accel.y = 0;
     }
   }
