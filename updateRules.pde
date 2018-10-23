@@ -2,19 +2,20 @@
 // and a few movement helper functions.
 
 // perform one step of kinematics updates (position, velocity)
-void kinematicsUpdate(float factor) {
+void kinematicsUpdate(float timePassed) {
   for (Mover m : movers) {
-    m.vel = m.vel.add(m.accel.scale(factor));
-    m.pos = m.pos.add(m.vel.scale(factor));
+    m.vel = m.vel.add(m.accel.scale(timePassed));
+    m.pos = m.pos.add(m.vel.scale(timePassed));
   }
 }
 
 // Checks if any movers went offscreen and bounces them off.
-void checkBounces(float speedDissipation, float border) {
-  float rightEdge = border*width;
-  float downEdge = border*height;
-  float upEdge = (1-border)*width;
-  float leftEdge = (1-border)*height;
+void checkBounces(float speedDissipation) {
+  float BORDER = 0.1;
+  float rightEdge = (1-BORDER)*width;
+  float downEdge = (1-BORDER)*height;
+  float upEdge = BORDER*width;
+  float leftEdge = BORDER*height;
   for (Mover m: movers) {
     if (m.pos.x > rightEdge) {
       m.pos.x = rightEdge;

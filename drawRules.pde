@@ -26,7 +26,7 @@ float triangleWave(int low, int high, int period, int offset) {
   if (t < period / 2) {
     return slope * t;
   } else {
-    return 2 * amp - slope * t;
+    return 2.0 * amp - slope * t;
   }
 }
 
@@ -48,6 +48,7 @@ void drawCurve() {
   beginShape();
   Mover m;
   for (int i=0; i < movers.length + 3; i++) {
+    // +3 loops around to the beginning to close curve
     m = movers[(i + 1) % movers.length];
     curveVertex(m.pos.x, m.pos.y);
   }  
