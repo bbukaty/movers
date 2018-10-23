@@ -15,14 +15,20 @@ void polygonBounce(int granularity) {
   noStroke();
   float r = triangleWave(0, 255, 150*granularity/2, 70);
   float g = triangleWave(0, 255, 180*granularity/2, 0);
-  fill(r, g, 200, 25);
+  fill(r, g, 200, 10);
   // drawPolygon();
   drawCurve();
 
   // SYSTEM UPDATE STEP
   if (frameCount % granularity == 0) {
     chaseNext(0.3);
-    // scaleVels(0.99);
+  }
+  if (frameCount > 6500) {
+    scaleVels(0.99);
+    fadeScreen(2,12);
+  } else if (frameCount > 5000) {
+    //scaleVels(0.99);
+    scaleVels(1.01);
   }
 }
 
@@ -40,4 +46,3 @@ void simpleParticles(int granularity) {
     scaleAccels(0.9);
   }
 }
-

@@ -11,7 +11,7 @@ void kinematicsUpdate(float timePassed) {
 
 // Checks if any movers went offscreen and bounces them off.
 void checkBounces(float speedDissipation) {
-  float BORDER = 0.1;
+  float BORDER = 0;
   float rightEdge = (1-BORDER)*width;
   float downEdge = (1-BORDER)*height;
   float upEdge = BORDER*width;

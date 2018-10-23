@@ -10,14 +10,15 @@ Mover[] movers;
 
 void setup() {
   size(1000,1000);
+  //fullScreen();
   // frameRate(4);
   // randomSeed(6);
   background(255);
   if (SAVE_OUTPUT) noLoop();
 
-  int numMovers = 3;
+  int numMovers = 12;
   movers = new Mover[numMovers];
-  spawnCircle(numMovers, 20);
+  spawnCircle(numMovers, 0);
 }
 
 void runSystem() {
@@ -46,6 +47,12 @@ void draw() {
     exit();
   } else {
     systemStep();
+  }
+}
+
+void keyPressed() {
+  if (key == ESC) {
+    exit();
   }
 }
 
