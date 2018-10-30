@@ -1,7 +1,8 @@
 // idea: two sets of movers with different rules, two competing shapes
 void systemStep() {
-  polygonBounce(4);
+  //polygonBounce(4);
   // simpleParticles(4);
+  polygonRotate(4);
 }
 
 void polygonBounce(int granularity) {
@@ -41,3 +42,11 @@ void simpleParticles(int granularity) {
   }
 }
 
+void polygonRotate(int granularity) {
+  fadeScreen(1,10);
+  stroke(5);
+  fill(0);
+  polygon.drawSelf(false);
+  polygon.rotation += 0.05;
+  
+}

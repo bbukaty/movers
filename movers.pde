@@ -7,6 +7,7 @@ int STEPS_BEFORE_SAVE = 500;
 String OUTPUT_PATH = "outputs/";
 
 Mover[] movers;
+Polygon polygon;
 
 void setup() {
   size(1000,1000);
@@ -15,9 +16,10 @@ void setup() {
   background(255);
   if (SAVE_OUTPUT) noLoop();
 
-  int numMovers = 3;
-  movers = new Mover[numMovers];
-  spawnCircle(numMovers, 20);
+  //int numMovers = 3;
+  //movers = new Mover[numMovers];
+  //spawnCircle(numMovers, 20);
+  polygon = new Polygon(width/2, height/2, 4, 40, 0);
 }
 
 void runSystem() {
