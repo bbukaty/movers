@@ -43,10 +43,32 @@ void simpleParticles(int granularity) {
 }
 
 void polygonRotate(int granularity) {
-  fadeScreen(1,10);
-  stroke(5);
+  float squareSide = 100;
+  float wobbleRadius = 30;
+  
+  int iters = 40;
+  int currIter = frameCount % iters;
+  float iterAngle = 2*PI/iters;
+  float currAngle = currIter * iterAngle;
+  
+  
+  polygon.rotation = -currAngle;
+  polygon.center.setPos(width/2 + wobbleRadius * cos(currAngle), height/2 + wobbleRadius * sin(currAngle));
+  //polygon.center.setPos(100,100);
+  
+  //fadeScreen(1,10);
+  noStroke();
+  background(255);
+  
   fill(0);
-  polygon.drawSelf(false);
-  polygon.rotation += 0.05;
+  polygon.drawSelf(true);
+  rect(width/2 - polygon.size/4, height/2 + polygon.size/4, polygon.size/2, polygon.size*1.1);
+  
+  fill(255);
+  rect(width/2 - squareSide/2, height/2 - squareSide/2, squareSide, squareSide);
+  
+  
+  
+  
   
 }

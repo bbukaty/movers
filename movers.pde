@@ -1,9 +1,9 @@
 import processing.svg.*;
 
 boolean SAVE_OUTPUT = false;
-String OUTPUT_TYPE = "tif";
-int RASTER_SCALE = 6;
-int STEPS_BEFORE_SAVE = 500;
+String OUTPUT_TYPE = "svg";
+int RASTER_SCALE = 2;
+int STEPS_BEFORE_SAVE = 1;
 String OUTPUT_PATH = "outputs/";
 
 Mover[] movers;
@@ -11,7 +11,7 @@ Polygon polygon;
 
 void setup() {
   size(1000,1000);
-  // frameRate(4);
+  frameRate(10);
   // randomSeed(6);
   background(255);
   if (SAVE_OUTPUT) noLoop();
@@ -19,7 +19,8 @@ void setup() {
   //int numMovers = 3;
   //movers = new Mover[numMovers];
   //spawnCircle(numMovers, 20);
-  polygon = new Polygon(width/2, height/2, 4, 40, 0);
+  
+  polygon = new Polygon(0, 0, 3, 200, 0);
 }
 
 void runSystem() {

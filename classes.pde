@@ -42,7 +42,11 @@ class Mover {
     vel = new Pair(0, 0);
     accel = new Pair(0, 0);
   }
-
+  
+  void setPos(float newX, float newY) {
+    pos.x = newX;
+    pos.y = newY;
+  }
 }
 
 class Polygon {
@@ -62,7 +66,7 @@ class Polygon {
   void drawSelf(boolean curve) {
     float sectorAngle = 2.0 * PI / n;
     int numIters = n;
-    if (curve) numIters += 2;
+    if (curve) numIters += 3;
     beginShape();
     for (int i = 0; i < numIters; i++) {
       float vertX = center.pos.x + size * cos(rotation + sectorAngle*i);
