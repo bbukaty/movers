@@ -7,6 +7,11 @@ class Pair {
     y = startY;
   }
 
+  Pair() {
+    x = 0;
+    y = 0;
+  }
+
   Pair add(Pair toAdd) {
     return new Pair(x + toAdd.x, y + toAdd.y);
   }
@@ -27,15 +32,23 @@ class Pair {
 }
 
 class Mover {
-
   Pair pos;
   Pair vel;
   Pair accel;
 
-  Mover(float startX, float startY) {
-    pos = new Pair(startX, startY);
+  Mover(Pair startPos) {
+    pos = startPos;
     vel = new Pair(0, 0);
     accel = new Pair(0, 0);
   }
 
+  Mover(float startX, float startY) {
+    this(new Pair(startX, startY));
+  }
+  // TODO: builder pattern (?)
+  
+  void setPos(float newX, float newY) {
+    pos.x = newX;
+    pos.y = newY;
+  }
 }

@@ -1,30 +1,26 @@
 import processing.svg.*;
 
 boolean SAVE_OUTPUT = false;
-String OUTPUT_TYPE = "tif";
-int RASTER_SCALE = 6;
-int STEPS_BEFORE_SAVE = 500;
+String OUTPUT_TYPE = "svg";
+int RASTER_SCALE = 2;
+int STEPS_BEFORE_SAVE = 1;
 String OUTPUT_PATH = "outputs/";
 
-Mover[] movers;
+MoverSystem system;
 
 void setup() {
   size(1000,1000);
-  // frameRate(4);
+  //frameRate(10);
   // randomSeed(6);
-  background(255);
   if (SAVE_OUTPUT) noLoop();
-
-  int numMovers = 3;
-  movers = new Mover[numMovers];
-  spawnCircle(numMovers, 20);
+  
+  system = new SimpleParticleSystem();
 }
 
 void runSystem() {
   background(255);
   for (int i = 0; i < STEPS_BEFORE_SAVE; i++) {
-    systemStep();
-    frameCount++;
+    system.step();
   }
 }
 
@@ -45,7 +41,7 @@ void draw() {
     }
     exit();
   } else {
-    systemStep();
+    system.step();
   }
 }
 
