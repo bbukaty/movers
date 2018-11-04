@@ -1,6 +1,17 @@
 class MoverSystem {
-  ArrayList<Mover> movers = new ArrayList<Mover>();
-  float borderPercent = 0;
+  ArrayList<Mover> movers;
+
+  MoverSystem() {
+    movers = new ArrayList<Mover>();
+  }
+
+  void init() {}
+  void updateSystem() {}
+  void drawSystem() {}
+  void step() {
+    drawSystem();
+    updateSystem();
+  }
 
   // perform one step of kinematics updates (velocity, position)
   void kinematicsUpdate(float timePassed) {
@@ -12,7 +23,7 @@ class MoverSystem {
   }
 
   // Checks if any movers went offscreen and bounces them off.
-  void checkBounces(float speedDissipation) {
+  void checkBounces(float borderPercent, float speedDissipation) {
     float border = max(width, height) * (borderPercent/100) / 2;
     float rightEdge = width - border;
     float downEdge = height - border;
@@ -50,13 +61,6 @@ class MoverSystem {
     for (Mover m: movers) {
       m.accel = m.accel.scale(factor);
     }
-  }
-
-  void updateSystem() {}
-  void drawSystem() {}
-  void step() {
-    drawSystem();
-    updateSystem();
   }
 
 }

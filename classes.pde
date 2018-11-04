@@ -56,3 +56,32 @@ class Mover {
     return m.pos.plus(pos.scale(-1)).magnitude();
   }
 }
+
+class Polygon extends Mover {
+  int vertices;
+  float size;
+  float rotation;
+  
+  Polygon(float startX, float startY, int n,
+        float startSize, float startRotation) {
+    super(startX, startY);
+    vertices = n;
+    size = startSize;
+    rotation = startRotation;
+  }
+  
+  void drawSelf(boolean curve) {
+    float sectorAngle = 2.0 * PI / vertices;
+    int numIters = vertices;
+    if (curve) numIters += 3;
+    beginShape();
+    for (int i = 0; i < numIters; i++) {
+      float vertX = pos.x + size * cos(rotation + sectorAngle*i);
+      float vertY = pos.y + size * sin(rotation + sectorAngle*i);
+      if (curve) curveVertex(vertX, vertY);
+      else vertex(vertX, vertY);
+    }
+    endShape();
+  }
+  
+}

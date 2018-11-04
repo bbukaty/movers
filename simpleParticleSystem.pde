@@ -3,10 +3,6 @@ class SimpleParticleSystem extends MoverSystem {
   float radius;
   int granularity;
 
-  SimpleParticleSystem() {
-    init();
-  }
-
   void init() {
     spawnRandom(10);
     radius = 10;
@@ -29,7 +25,7 @@ class SimpleParticleSystem extends MoverSystem {
   }
 
   void updateSystem() {
-    checkBounces(0.6);
+    checkBounces(0, 0.6);
     kinematicsUpdate(1.0/granularity);
 
     if (frameCount % granularity == 0) {

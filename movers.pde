@@ -1,28 +1,31 @@
 import processing.svg.*;
 
 boolean SAVE_OUTPUT = false;
-String OUTPUT_TYPE = "svg";
-int RASTER_SCALE = 2;
-int STEPS_BEFORE_SAVE = 1;
+String OUTPUT_TYPE = "tif";
+int RASTER_SCALE = 8;
+int STEPS_BEFORE_SAVE = 40;
 String OUTPUT_PATH = "outputs/";
 
 MoverSystem system;
 
 void setup() {
-  size(1000,1000);
-  //frameRate(10);
+  size(1920,1080);
+  frameRate(10);
   // randomSeed(6);
   if (SAVE_OUTPUT) noLoop();
   
   // system = new SimpleParticleSystem();
-  system = new TenuousConnections();
+  // system = new TenuousConnections();
+  system = new Zoetrope();
 
+  system.init();
 }
 
 void runSystem() {
   background(255);
   for (int i = 0; i < STEPS_BEFORE_SAVE; i++) {
     system.step();
+    frameCount++;
   }
 }
 
