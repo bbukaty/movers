@@ -5,8 +5,8 @@ class MoverSystem {
   // perform one step of kinematics updates (velocity, position)
   void kinematicsUpdate(float timePassed) {
     for (Mover m : movers) {
-      m.vel = m.vel.add(m.accel.scale(timePassed));
-      m.pos = m.pos.add(m.vel.scale(timePassed));
+      m.vel = m.vel.plus(m.accel.scale(timePassed));
+      m.pos = m.pos.plus(m.vel.scale(timePassed));
       // TODO do the math instead of approximation
     }
   }

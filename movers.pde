@@ -14,7 +14,9 @@ void setup() {
   // randomSeed(6);
   if (SAVE_OUTPUT) noLoop();
   
-  system = new SimpleParticleSystem();
+  // system = new SimpleParticleSystem();
+  system = new TenuousConnections();
+
 }
 
 void runSystem() {

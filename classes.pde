@@ -12,7 +12,7 @@ class Pair {
     y = 0;
   }
 
-  Pair add(Pair toAdd) {
+  Pair plus(Pair toAdd) {
     return new Pair(x + toAdd.x, y + toAdd.y);
   }
 
@@ -50,5 +50,9 @@ class Mover {
   void setPos(float newX, float newY) {
     pos.x = newX;
     pos.y = newY;
+  }
+
+  float distanceTo(Mover m) {
+    return m.pos.plus(pos.scale(-1)).magnitude();
   }
 }

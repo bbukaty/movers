@@ -1,10 +1,19 @@
 class SimpleParticleSystem extends MoverSystem {
-  float radius = 10;
-  int numParticles = 10;
-  int granularity = 4;  
+  // TODO: make circle class extending Mover with radius?
+  float radius;
+  int granularity;
 
   SimpleParticleSystem() {
-    // TODO: make circle class extending Mover with radius
+    init();
+  }
+
+  void init() {
+    spawnRandom(10);
+    radius = 10;
+    granularity = 4;
+  }
+
+  void spawnRandom(int numParticles) {
     for (Pair vertex : getRandomVertices(numParticles)) {
       movers.add(new Mover(vertex));
     }
@@ -35,6 +44,33 @@ class SimpleParticleSystem extends MoverSystem {
     fill(140);
     for (Mover m : movers) {
       ellipse(m.pos.x, m.pos.y, radius, radius);
+    }
+  }
+}
+
+class TenuousConnections extends SimpleParticleSystem {
+  float maxDistance = height/4;
+  
+  void init() {
+    spawnRandom(40);
+    granularity = 8;
+  }
+
+  void drawSystem() {
+    // fadeScreen(2, 10);
+    background(255);
+
+    noFill();
+    for (int i = 0; i < movers.size(); i++) {
+      for (int j = i; j < movers.size(); j++) {
+        Mover a = movers.get(i);
+        Mover b = movers.get(j);
+        float distanceFactor = max(0, 1 - a.distanceTo(b) / maxDistance);
+        strokeWeight(3);
+        strokeCap(SQUARE);
+        stroke(0, distanceFactor * 255);
+        line(a.pos.x, a.pos.y, b.pos.x, b.pos.y);
+      }
     }
   }
 }
