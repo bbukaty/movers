@@ -6,28 +6,21 @@ int RASTER_SCALE = 2;
 int STEPS_BEFORE_SAVE = 1;
 String OUTPUT_PATH = "outputs/";
 
-Mover[] movers;
-Polygon polygon;
+MoverSystem system;
 
 void setup() {
   size(1000,1000);
-  frameRate(10);
+  //frameRate(10);
   // randomSeed(6);
-  background(255);
   if (SAVE_OUTPUT) noLoop();
-
-  //int numMovers = 3;
-  //movers = new Mover[numMovers];
-  //spawnCircle(numMovers, 20);
   
-  polygon = new Polygon(0, 0, 3, 200, 0);
+  system = new SimpleParticleSystem();
 }
 
 void runSystem() {
   background(255);
   for (int i = 0; i < STEPS_BEFORE_SAVE; i++) {
-    systemStep();
-    frameCount++;
+    system.step();
   }
 }
 
@@ -48,7 +41,7 @@ void draw() {
     }
     exit();
   } else {
-    systemStep();
+    system.step();
   }
 }
 
