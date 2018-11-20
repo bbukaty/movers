@@ -13,6 +13,18 @@ class MoverSystem {
     updateSystem();
   }
 
+  void spawnRandom(int numParticles) {
+    for (Pair vertex : getRandomVertices(numParticles)) {
+      movers.add(new Mover(vertex));
+    }
+  }
+
+  void spawnCircle(int numParticles, float radius, float offset) {
+    for (Pair vertex : getPolygonVertices(numParticles, radius, offset)) {
+      movers.add(new Mover(vertex));
+    }
+  }
+
   // perform one step of kinematics updates (velocity, position)
   void kinematicsUpdate(float timePassed) {
     for (Mover m : movers) {
@@ -63,4 +75,23 @@ class MoverSystem {
     }
   }
 
+  void addRandomAccel(float rangeStart, float rangeEnd) {
+    Mover m;
+    for (int i = 0; i < movers.size(); i++) {
+      m = movers.get(i);
+      m.accel.x += random(rangeStart, rangeEnd);
+      m.accel.y += random(rangeStart, rangeEnd);
+    }
+  }
+
+  void chaseNext(float intensity) {
+    Mover m;
+    Mover t; // target
+    for (int i=0; i < movers.size(); i++) {
+      m = movers.get(i);
+      t = movers.get((i + 1) % movers.size());
+      m.accel.x = intensity * (t.pos.x - m.pos.x) / width;
+      m.accel.y = intensity * (t.pos.y - m.pos.y) / height;
+    }
+  }
 }

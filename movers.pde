@@ -9,20 +9,20 @@ String OUTPUT_PATH = "outputs/";
 MoverSystem system;
 
 void setup() {
-  size(1920,1080);
-  frameRate(10);
+  size(1000,1000);
+  // frameRate(10);
   // randomSeed(6);
   if (SAVE_OUTPUT) noLoop();
   
   // system = new SimpleParticleSystem();
-  // system = new TenuousConnections();
-  system = new Zoetrope();
+  // system = new ShiftingPolygon();
+  system = new TenuousConnections();
+  // system = new Zoetrope();
 
   system.init();
 }
 
 void runSystem() {
-  background(255);
   for (int i = 0; i < STEPS_BEFORE_SAVE; i++) {
     system.step();
     frameCount++;
