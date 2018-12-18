@@ -1,3 +1,4 @@
-/.vscode
-/out
-/outputs
+.vscode
+*/.vscode
+*/out
+*/outputs
